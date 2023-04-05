@@ -1,3 +1,5 @@
+import {Header as MantineHeader, Anchor} from "@mantine/core";
+
 const navigations = [
   {name: "Home", href: "#", current: true},
   {name: "Others", href: "#", current: false},
@@ -6,6 +8,7 @@ const navigations = [
 
 const Header = ()=> {
     return(
+      <MantineHeader height={{base: 50, md: 70}} p="md">
         <div
           style={{
             display: "flex",
@@ -16,11 +19,12 @@ const Header = ()=> {
         >
           {/*TODO: Add logo*/}
           {navigations.map((item) => (
-            <div>
+            <Anchor href={item.href} target="_self">
               {item.name}
-            </div>
+            </Anchor>
           ))}
         </div>
+      </MantineHeader>
     )
 }
 

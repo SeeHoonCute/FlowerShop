@@ -1,9 +1,11 @@
+import {Footer as MantineFooter} from "@mantine/core";
+
 export const Footer = () => {
   return(
-    <div>
+    <MantineFooter height={60} p="md">
       Application footer
       {/*TODO: Change to appropriate footer*/}
-    </div>
+    </MantineFooter>
   )
 };
 

@@ -1,14 +1,14 @@
-import {Center, SegmentedControl, Box, Group, Text, Title} from '@mantine/core';
+import {Center, SegmentedControl, Box, Group, Text} from '@mantine/core';
 import {IconFlame, IconTrendingUp, IconTrendingDown} from '@tabler/icons-react';
 
 const SortingBar = () => {
   return (
-    <Group position="left">
+    <Group position="left" mb="lg">
       <Text size="lg" weight={700}>Sắp xếp theo</Text>
       <SegmentedControl
         data={[
           {
-            value: 'preview',
+            value: 'top',
             label: (
               <Center>
                 <IconFlame size="1rem"/>
@@ -17,7 +17,7 @@ const SortingBar = () => {
             ),
           },
           {
-            value: 'code',
+            value: 'new',
             label: (
               <Center>
                 <Box ml={10}>Mới nhất</Box>
@@ -25,7 +25,7 @@ const SortingBar = () => {
             ),
           },
           {
-            value: 'export',
+            value: 'up',
             label: (
               <Center>
                 <IconTrendingUp size="1rem"/>
@@ -34,7 +34,7 @@ const SortingBar = () => {
             ),
           },
           {
-            value: 'export',
+            value: 'down',
             label: (
               <Center>
                 <IconTrendingDown size="1rem"/>

@@ -1,6 +1,7 @@
 import {Container, Grid, Pagination, Title} from "@mantine/core";
-import FilterBar from "../../components/filter-bar/filter-bar";
-import SortingBar from "../../components/sorting-bar/sorting-bar";
+import FilterBar from "../../components/filter_bar/filter_bar";
+import SortingBar from "../../components/sorting_bar/sorting_bar";
+import ProductsList from "../../components/product_list/product_list";
 
 export const Products = () => {
   return (
@@ -11,9 +12,7 @@ export const Products = () => {
         </Grid.Col>
         <Grid.Col span="auto">
           <SortingBar/>
-          <div>
-            Products
-          </div>
+          <ProductsList/>
           <Pagination total={10} position="center"/>
         </Grid.Col>
       </Grid>

@@ -4,8 +4,19 @@ import {Home} from "./pages/home";
 import Products from "./pages/products";
 import ProductDetail from "./pages/product-detail";
 import Payment from "./pages/checkout/payment/payment";
+import LoginForm from "./pages/loginForm/login";
+import SignUpForm from "./pages/loginForm/signup";
+import Stepper_cart from "./pages/checkout/Stepper";
 
 export const routes: RouteObject[] = [
+  {
+    path: "login",
+    element: <LoginForm/>
+  },
+  {
+    path: "signup",
+    element: <SignUpForm/>
+  },
   {
     path: "",
     element: <Frame/>,
@@ -26,7 +37,11 @@ export const routes: RouteObject[] = [
             element: <ProductDetail/>
           }
         ]
-      }, 
+      },
+      {
+        path: "checkout",
+        element: <Stepper_cart/>
+      },
       {
         path: "pay",
         element: <Payment/>

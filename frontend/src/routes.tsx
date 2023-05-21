@@ -3,6 +3,7 @@ import {Frame} from "./frame";
 import {Home} from "./pages/home";
 import Products from "./pages/products";
 import ProductDetail from "./pages/product-detail";
+import Payment from "./pages/checkout/payment/payment";
 
 export const routes: RouteObject[] = [
   {
@@ -25,6 +26,10 @@ export const routes: RouteObject[] = [
             element: <ProductDetail/>
           }
         ]
+      }, 
+      {
+        path: "pay",
+        element: <Payment/>
       },
     ]
   },

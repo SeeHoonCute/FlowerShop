@@ -12,7 +12,7 @@ import {
   useMantineTheme
 } from "@mantine/core";
 import {NumberWithAddSub} from "../components/number_with_add_sub";
-import hoa from "../images/bo-hoa-hong-1.jpg";
+import hoa from "../assets/img/bo-hoa-hong-1.jpg";
 
 export const ProductDetail = () => {
   const theme = useMantineTheme();

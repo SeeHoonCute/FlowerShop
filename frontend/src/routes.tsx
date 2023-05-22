@@ -1,6 +1,6 @@
 import {RouteObject} from "react-router-dom";
 import {Frame} from "./frame";
-import {Home} from "./pages/home";
+import {Home} from "./pages/Home/home";
 import Products from "./pages/products";
 import ProductDetail from "./pages/product-detail";
 

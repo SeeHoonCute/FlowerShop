@@ -12,7 +12,6 @@ import {
   useMantineTheme
 } from "@mantine/core";
 import {NumberWithAddSub} from "../components/number_with_add_sub";
-import hoa from "../assets/img/bo-hoa-hong-1.jpg";
 
 export const ProductDetail = () => {
   const theme = useMantineTheme();
@@ -26,7 +25,6 @@ export const ProductDetail = () => {
               <Indicator inline label="-20%" size={16}
                          position="top-start"
                          color={theme.colors.red[4]}>
-                <Image src={hoa}></Image>
               </Indicator>
             </Center>
           </Grid.Col>

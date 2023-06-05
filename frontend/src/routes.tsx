@@ -42,10 +42,6 @@ export const routes: RouteObject[] = [
         path: "checkout",
         element: <Stepper_cart/>
       },
-      {
-        path: "pay",
-        element: <Payment/>
-      },
     ]
   },
 ];

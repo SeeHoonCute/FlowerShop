@@ -2,8 +2,12 @@ import { Flex } from "@mantine/core";
 import BreadcrumbsComponent from "./breadcrumbsComponent";
 import InfomationForm from "./informationForm";
 
+type StepperProps = {
+    activeStep: number;
+    onStepChange: (nextStep: number) => void;
+  };
 
-function InformationPage(){
+const InformationPage: React.FC< StepperProps> = ({onStepChange, activeStep})=>{
     return(
     <div style={{display:"flex", justifyContent: "center", alignItems: "center" }}>    
     <Flex
@@ -14,7 +18,8 @@ function InformationPage(){
         wrap="wrap"
         w={900}>
         <BreadcrumbsComponent />
-        <InfomationForm/>
+        <InfomationForm activeStep={activeStep} onStepChange={onStepChange}/>
+        
     </Flex>
     </div>
     );

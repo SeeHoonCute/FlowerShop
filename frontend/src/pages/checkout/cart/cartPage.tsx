@@ -1,10 +1,33 @@
-import { Flex } from "@mantine/core";
+import { Button, Flex } from "@mantine/core";
 import ShoppingCart from "./yourShoppingCart";
 import OrderSummary from "./orderSummary";
 import BreadcrumbsComponent from "./breadcrumbsComponent";
 import FormPromotion from "./formPromotion";
+import { useState } from "react";
 
-function CartPage(){
+
+interface Product {
+    id: number;
+    sanpham: string;
+    img: string;
+    gia: number;
+    soluong: number;
+    tamtinh: number;
+  }
+  interface ShoppingCartProps {
+    datas: Product[];
+    // tong:number;
+  }
+
+  type StepperProps = {
+    activeStep: number;
+    onStepChange: (nextStep: number) => void;
+  };
+
+
+const CartPage: React.FC<ShoppingCartProps & StepperProps> = ({datas , onStepChange, activeStep}) =>{
+
+
     return(
         <div style={{display:"flex", justifyContent: "center", alignItems: "center" }}>
 
@@ -19,11 +42,13 @@ function CartPage(){
 
             <BreadcrumbsComponent />
         <Flex gap="xl">
-            <ShoppingCart />
-            <OrderSummary/>
+            <ShoppingCart datas={datas} />
+            <OrderSummary activeStep={activeStep} onStepChange={onStepChange}/>
         </Flex>
             <FormPromotion/>
+        {/* <Button variant="outline" style={{ alignSelf: "flex-start" }}  onClick={() => onStepChange(activeStep + 1)}>Back</Button> */}
         </Flex>
+
     </div>
 
     );

@@ -4,7 +4,12 @@ import Contact from "./contact";
 import CreditCardForm from "./creditCard"; 
 import BillingAddress from "./billingAddress";
 
-function Payment(){
+type StepperProps = {
+    activeStep: number;
+    onStepChange: (nextStep: number) => void;
+  };
+
+const Payment: React.FC< StepperProps> = ({onStepChange, activeStep})=>{
     return(
     <div
     style={{
@@ -23,7 +28,7 @@ function Payment(){
             <CreditCardForm/>
             <BillingAddress />
 
-            <Button type="submit" style={{ width: '100%', marginTop: '16px' }}>
+            <Button type="submit" style={{ width: '100%', marginTop: '16px' }} color="gray" onClick={() => onStepChange(activeStep + 1)}>
                 Xác nhận
             </Button>
         </Flex>

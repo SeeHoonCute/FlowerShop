@@ -6,7 +6,7 @@ import { IconShoppingCartDiscount } from '@tabler/icons-react';
 import { useState, useEffect } from "react";
 
 
-interface Data {
+interface Product {
     id: number;
     sanpham: string;
     img: string;
@@ -15,55 +15,22 @@ interface Data {
     tamtinh: number;
   }
 
-const datas : Data[]=[{
-    id:0,
-    sanpham:"Hoa hồng sắc xanh",
-    img: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80",
-    gia: 499000,
-    soluong:1,
-    tamtinh:499000,
-},{
-    id:1,
-    sanpham:"Bó hoa hướng dương",
-    img: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80",
-    gia: 499000,
-    soluong:1,
-    tamtinh:499000,
+interface Product {
+  id: number;
+  sanpham: string;
+  img: string;
+  gia: number;
+  soluong: number;
+  tamtinh: number;
 }
-// ,{
-//     id:2,
-//     sanpham:"Bó hoa hông mộng mơ",
-//     img: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80",
-//     gia: 499000,
-//     soluong:1,
-//     tamtinh:499000,
-// },{
-//     id:3,
-//     sanpham:"Bó hoa tulip",
-//     img: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80",
-//     gia: 499000,
-//     soluong:1,
-//     tamtinh:499000,
-// }
-// ,{
-//     id:4,
-//     sanpham:"Bó hoa cúng cả nhóm",
-//     img: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80",
-//     gia: 499000,
-//     soluong:1,
-//     tamtinh:499000,
-// },{
-//     id:5,
-//     sanpham:"Bó hoa cúng cả nhóm",
-//     img: "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80",
-//     gia: 499000,
-//     soluong:2,
-//     tamtinh:499000,
-// }
-]
+
+interface ShoppingCartProps {
+  datas: Product[];
+}
 
 
-function ShoppingCart() {
+
+const ShoppingCart : React.FC<ShoppingCartProps> = ({datas}) => {
     const [dataList, setDataList] = useState(datas);
     const handle_count_inc = (index: number) => {
         const newDataList = [...dataList];
@@ -88,7 +55,7 @@ function ShoppingCart() {
           currency: 'VND',
         });
       }
-
+ 
 
     const rows = datas.map((data) => (
         <tr key={data.id}>    

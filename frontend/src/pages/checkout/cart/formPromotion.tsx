@@ -39,7 +39,7 @@ function FormPromotion() {
                 value={orderNote}
                 onChange={handleOrderNoteChange}
                 rows={4}
-                style={{ marginTop: '1rem', marginBottom: '20px' }}
+                style={{ marginTop: '1rem'}}
             />
         </Flex>
     </form>

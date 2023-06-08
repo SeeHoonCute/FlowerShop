@@ -2,7 +2,7 @@ import {RouteObject} from "react-router-dom";
 import {Frame} from "./frame";
 import {Home} from "./pages/home";
 import Products from "./pages/products/products";
-import ProductDetail from "./pages/product-detail";
+import ProductDetail from "./pages/productdetail/productdetail";
 import Payment from "./pages/checkout/payment/payment";
 import LoginForm from "./pages/loginForm/login";
 import SignUpForm from "./pages/loginForm/signup";

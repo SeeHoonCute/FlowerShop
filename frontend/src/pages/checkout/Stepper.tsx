@@ -3,6 +3,7 @@ import { Stepper, Button, Group, Text, Container } from '@mantine/core';
 import CartPage from './cart/cartPage';
 import InformationPage from './information/informationPage';
 import Payment from './payment/payment';
+import CompletedTransactionPage from './completeTrans/completeTrans';
 
 interface Product {
   id: number;
@@ -116,7 +117,8 @@ function Stepper_cart ()  {
         </Stepper.Step>
 
         <Stepper.Completed>
-          <Text>Completed, click back button to get to previous step</Text>
+          {/* <Text>Completed, click back button to get to previous step</Text> */}
+          <CompletedTransactionPage />
         </Stepper.Completed>
       </Stepper>
 

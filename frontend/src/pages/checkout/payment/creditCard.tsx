@@ -22,7 +22,7 @@ const CreditCardForm: React.FC = () => {
   const [useDifferentPayMethod, setUseDifferentPayMethod] = useState(false);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUseDifferentPayMethod(event.currentTarget.checked);
+    setUseDifferentPayMethod((prevValue) => !prevValue);
   };
 
   const handleChange = (field: keyof CreditCardFormValues, value: string) => {

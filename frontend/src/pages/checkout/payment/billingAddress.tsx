@@ -5,7 +5,7 @@ const BillingAddress: React.FC = () => {
   const [useDifferentAddress, setUseDifferentAddress] = useState(false);
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUseDifferentAddress(event.currentTarget.checked);
+    setUseDifferentAddress((prevValue) => !prevValue);
   };
 
   return (

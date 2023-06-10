@@ -16,7 +16,7 @@ export const Frame = () => {
         },
       }}
       footer={
-        <Footer data={[]}/>
+        <Footer/>
       }
       header={
         <Header user={{

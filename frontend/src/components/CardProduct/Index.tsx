@@ -1,62 +1,46 @@
-import { createStyles, Paper, Text, Title, Button, rem } from '@mantine/core';
+export type CollectionProductProps = {
+  // image: string;
+  name: string;
+  icon: ReactElement;
+  color: string;
+}
+import { CardSection, createStyles, rem, Image, Title,Text, Card, BackgroundImage, Button } from "@mantine/core";
 import Styles from "./styles.module.scss";
+import { ReactElement } from "react";
 const useStyles = createStyles((theme) => ({
-  card: {
-    height: rem(440),
+ card: {
+    border:'none',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    borderRadius: theme.radius.md,
+    height: rem(90),
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    transition: 'box-shadow 150ms ease, transform 100ms ease',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-  },
-
-  title: {
-    fontFamily: `Greycliff CF ${theme.fontFamily}`,
-    fontWeight: 900,
-    color: theme.white,
-    lineHeight: 1.2,
-    fontSize: rem(32),
-    marginTop: theme.spacing.xs,
-  },
-
-  category: {
-    color: theme.white,
-    opacity: 0.7,
-    fontWeight: 700,
-    textTransform: 'uppercase',
-  },
-}));
-
-interface ArticleCardImageProps {
-  image: string;
-  title: string;
-  category: string;
+ },
+ text:{
+  color:'white'
+ }
+}))
+const CollectionProduct = (props: CollectionProductProps) =>{
+  // const { classes } = useStyles();
+  // return(
+  //   <Button className={classes.card}
+  //     // shadow="md"
+  //     p="xl"
+  //     radius="md"
+  //     sx={{ backgroundImage: `url(${props.image})` }}>
+  //     <CardSection
+  //   >
+  //       <Text align="center"
+  //       className={classes.text}
+  //       >{props.name}</Text>
+  //   </CardSection>
+  //   </Button>
+  // )
 }
-
-function ArticleCardImage({ image, title, category }: ArticleCardImageProps) {
-  const { classes } = useStyles();
-
-  return (
-    <Paper
-      shadow="md"
-      p="xl"
-      radius="md"
-      sx={{ backgroundImage: `url(${image})` }}
-      className={classes.card}
-    >
-      <div>
-        <Text className={classes.category} size="xs">
-          {category}
-        </Text>
-        <Title order={3} className={classes.title}>
-          {title}
-        </Title>
-      </div>
-      <Button variant="white" color="dark">
-        Khám phá ngay
-      </Button>
-    </Paper>
-  );
-}
-export default ArticleCardImage;
+export default CollectionProduct;

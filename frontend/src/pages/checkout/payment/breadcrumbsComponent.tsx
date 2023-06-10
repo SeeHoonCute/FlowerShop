@@ -14,7 +14,7 @@ function BreadcrumbsComponent() {
         <span style={{ color: '#797b7e', margin: '0 0.5rem' }}>/</span>
         <span>Infomation</span>
         <span style={{ color: '#797b7e', margin: '0 0.5rem' }}>/</span>
-        <span>payment</span>
+        <span>paymentDTO</span>
       </div>
     </Paper>
   );

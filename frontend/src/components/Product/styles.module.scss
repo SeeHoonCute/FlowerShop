@@ -1,18 +1,28 @@
 .Cost{
   text-decoration:line-through;
-  font-size: 10px;
+  font-size: 12px;
 }
 .ColorFont
 {
-  color: #A20401;
-  border-color: #A20401;
+  color: #81513F;
+  border-color: #81513F;
   padding: 2px;
 }
 
 .Color{
-  background-color: #A20401;
+  background-color: #F3BE97;
   padding: 10px;
 }
 .description{
   font-size: 15px;
 }
+.name{
+  font-size: 15px;
+}
+.card {
+  background: 'initial',
+}
+// .fontSize{
+//   padding-top: -2px;
+//   padding-left: -2px;
+// }

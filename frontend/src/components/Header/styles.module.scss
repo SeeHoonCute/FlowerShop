@@ -1,5 +1,4 @@
 .logo{
-  display: flex;
   color: #fff;
   margin: 0 0.315rem;
   img {
@@ -9,17 +8,14 @@
     border-radius: 20%;
   }
 }
-.header {
-  margin: 5 rem;
-}
-.mainSection {
-  margin: 5 rem;
-}
-.searchButton {
-  margin-top: 10px;
-}
+// .header {
+//   margin: 5 rem;
+// }
+// .searchButton {
+//   margin-top: 5px;
+// }
 .titleLogo{
-  color: #797979;
+  color: #8a8686;
 }
 .iconCart {
   display: flex;
@@ -31,3 +27,16 @@
     border-radius: 20%;
   }
 }
+.header{
+  background-color: #fff;
+  // position: fixed;
+}
+
+.Button:hover{
+  background-color: #fff;
+}
+.Button{
+  background-color: #fff;
+  color: rgba(212, 6, 30, 0.692);
+}
+// #b67fc6

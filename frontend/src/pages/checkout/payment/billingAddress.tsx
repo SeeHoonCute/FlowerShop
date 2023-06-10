@@ -10,7 +10,7 @@ const BillingAddress: React.FC = () => {
 
   return (
     <div style={{ width: '100%', margin: '0 auto' }}>
-      <Title order={3} style={{ marginBottom: '16px' }}>
+      <Title orderDTO={3} style={{ marginBottom: '16px' }}>
         Địa chỉ thanh toán
       </Title>
 
@@ -55,7 +55,7 @@ const BillingAddress: React.FC = () => {
       </Grid>
 
       <TextInput label="Địa chỉ" placeholder="Nhập địa chỉ" required style={{ marginBottom: '16px' }} />
-          
+
 
         </>
       )}

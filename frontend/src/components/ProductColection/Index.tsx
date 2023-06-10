@@ -1,86 +1,156 @@
 import {
   createStyles,
-  Badge,
-  Group,
-  Title,
-  Text,
   Card,
+  Text,
   SimpleGrid,
-  Container,
+  UnstyledButton,
+  Anchor,
+  Group,
   rem,
+  Image
 } from '@mantine/core';
-import CardProduct from "../../components/CardProduct/Index";
-import Collection1 from "../../assets/img/Colection/Colectinon1.webp";
-import Styles from "./styles.module.scss";
+import { IconPlant} from '@tabler/icons-react';
+import HoaHong from "../../assets/img/FlowerCollection/HoaHong.png";
+import HoaHaiDuong from "../../assets/img/FlowerCollection/HoaHaiDuong.jpg";
+import HoaTulip from "../../assets/img/FlowerCollection/HoaTulip.jpg";
+import HoaHuongDuong from "../../assets/img/FlowerCollection/HoaHuongDuong.jpg"
+import HoaCamTuCau from "../../assets/img/FlowerCollection/HoaCamTuCau.jpg"
+import HoaOaiHuong from "../../assets/img/FlowerCollection/HoaOaiHuong.jpg"
+import HoaMauDon from "../../assets/img/FlowerCollection/HoaMauDon.jpg"
+import HoaCatTuong from "../../assets/img/FlowerCollection/HoaCatTuong.jpg"
+import HoaCucHoaMi from "../../assets/img/FlowerCollection/HoaCucHoaMi.jpg"
+import { useEffect, useState } from 'react';
+
+export type ColectionCard = {
+  title: string,
+  image: string;
+  link: string;
+};
+
+const mockdata :ColectionCard[] = [
+  // { title: 'Hoa Hồng', icon: IconPlant, color: 'violet' },
+  // { title: 'Hoa Hải Đường', icon: IconPlant, color: 'indigo' },
+  // { title: 'Hoa Tulip', icon: IconPlant, color: 'blue' },
+  // { title: 'Hoa Hướng Dương', icon: IconPlant, color: 'green' },
+  // { title: 'Hoa Cẩm Tú Cầu', icon: IconPlant, color: 'teal' },
+  // { title: 'Hoa SeeHoon', icon: IconPlant, color: 'cyan' },
+  // { title: 'Hoa SeeHoon', icon: IconPlant, color: 'pink' },
+  // { title: 'Hoa SeeHoon', icon: IconPlant, color: 'red' },
+  // { title: 'Hoa SeeHoon', icon: IconPlant, color: 'orange' },
+  { title: 'Hoa Hồng', image: HoaHong, link: "#"},
+  { title: 'Hoa Hải Đường', image: HoaHaiDuong, link: "#"},
+  { title: 'Hoa Tulip', image: HoaTulip,link: "#"},
+  { title: 'Hoa Hướng Dương', image: HoaHuongDuong, link: "#"},
+  { title: 'Hoa Cẩm Tú Cầu', image: HoaCamTuCau, link: "#"},
+  { title: 'Hoa Oải Hương', image: HoaOaiHuong , link: "#"},
+  { title: 'Hoa Mẫu Đơn', image:HoaMauDon, link: "#"},
+  { title: 'Hoa Cát Tường', image: HoaCatTuong, link: "#"},
+  { title: 'Hoa Cúc Họa Mi', image: HoaCucHoaMi, link: "#"},
+];
+
 const useStyles = createStyles((theme) => ({
-  title: {
-    fontSize: rem(34),
-    fontWeight: 900,
-
-    [theme.fn.smallerThan('sm')]: {
-      fontSize: rem(24),
-    },
-  },
-
-  description: {
-    maxWidth: 600,
-    margin: 'auto',
-
-    '&::after': {
-      content: '""',
-      display: 'block',
-      backgroundColor: theme.fn.primaryColor(),
-      width: rem(45),
-      height: rem(2),
-      marginTop: theme.spacing.sm,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
-  },
-
   card: {
-    border: `${rem(1)} solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1]
-    }`,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    border: 'none',
   },
 
-  cardTitle: {
-    '&::after': {
-      content: '""',
-      display: 'block',
-      backgroundColor: theme.fn.primaryColor(),
-      width: rem(45),
-      height: rem(2),
-      marginTop: theme.spacing.sm,
+  title: {
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontWeight: 700,
+  },
+
+  item: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    borderRadius: theme.radius.md,
+    height: rem(200),
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+    transition: 'box-shadow 150ms ease, transform 100ms ease',
+
+    '&:hover': {
+      boxShadow: theme.shadows.md,
+      transform: 'scale(1.05)',
     },
   },
 }));
 
-function FeaturesCards() {
+
+function ActionsGrid() {
   const { classes, theme } = useStyles();
+  const [collection, setCollection] = useState<ColectionCard[]>([]);
 
-  return (
-    <Container size="lg" py="xl">
-      <Group position="center" >
-        <Badge variant="filled" size="lg" className={Styles.titleColection}>
-          Bộ sưu tập đáng chú ý
-        </Badge>
-      </Group>
-
-      <Title order={2} className={classes.title} ta="center" mt="sm">
-      Hoa là ngôn ngữ không lời của tình yêu
-      </Title>
-
-      <Text c="dimmed" className={classes.description} ta="center" mt="md">
-      "Có bao giờ bạn nhìn vào một đóa hoa và cảm thấy tình yêu lớn đến vô tận? Đó chính là cách mà hoa nói với chúng ta, rằng dù trong thế giới tối tăm, có thể nở rộ những nụ cười và tình yêu."
+  useEffect(() => {
+    setCollection(mockdata);
+  }, []);
+  const items = mockdata.map((item) => (
+    <UnstyledButton key={item.title} className={classes.item}>
+      <Image src={item.image} height={170}></Image>
+      <Text size="xs" mt={7}>
+        {item.title}
       </Text>
-
-      <SimpleGrid cols={3} spacing="xl" mt={50} breakpoints={[{ maxWidth: 'md', cols: 1 }]}>
-        <CardProduct image={Collection1} title={'Hoa hồng'} category={'"Hoa hồng là một ngôn ngữ không cần lời, nó tỏa ra vẻ đẹp và mùi hương để nói lên tình yêu và lòng trung thành."'}></CardProduct>
-        <CardProduct image={Collection1} title={'Hoa hồng'} category={'"Hoa hồng là một ngôn ngữ không cần lời, nó tỏa ra vẻ đẹp và mùi hương để nói lên tình yêu và lòng trung thành."'}></CardProduct>
-        <CardProduct image={Collection1} title={'Hoa hồng'} category={'"Hoa hồng là một ngôn ngữ không cần lời, nó tỏa ra vẻ đẹp và mùi hương để nói lên tình yêu và lòng trung thành."'}></CardProduct>
+    </UnstyledButton>
+  ));
+  return (
+    <Card className={classes.card}>
+      <SimpleGrid cols={9} mt="md">
+        {items}
       </SimpleGrid>
-    </Container>
+    </Card>
   );
 }
-export default FeaturesCards;
+export  default ActionsGrid;
+
+// import CollectionProduct, {CollectionProductProps} from "../CardProduct/Index";
+// import collectionImg from "../../assets/img/Colection/col.png";
+// import { Component, useEffect, useState } from "react";
+// import { Card, SimpleGrid, rem,createStyles } from "@mantine/core";
+// import {IconCreditCard,IconFlower} from "@tabler/icons-react";
+// const mockCollections: CollectionProductProps[] =[
+//   {
+//     name: "Hoa Tulip",
+//     icon: <IconFlower/>,
+//     color: 'violet',
+//   },
+//   {
+//     name: "Hoa Tulip",
+//     icon: <IconFlower/>,
+//     color: 'violet',
+//   },
+//   {
+//     name: "Hoa Tulip",
+//     icon: <IconFlower/>,
+//     color: 'violet',
+//   },
+//   {
+//     name: "Hoa Tulip",
+//     icon: <IconFlower/>,
+//     color: 'violet',
+//   },
+
+// ]
+// const useStyles = createStyles((theme) => ({
+//  collection:{
+//   margin: rem(50)
+//  }
+// }));
+// function CollectionProductList() {
+//   const { classes } = useStyles();
+//   const [collections, setCollection] = useState<CollectionProductProps[]>([]);
+//   useEffect(() => {
+//     setCollection(mockCollections);
+//   }, []);
+//   const CollectionproductsList = collections.map((collection) => {
+//     return (
+//       <CollectionProduct {...collection}/>
+//     )
+//   })
+//   return (
+//       <SimpleGrid cols={7} mt="md" className={classes.collection}>
+//       {CollectionproductsList}
+//       </SimpleGrid>
+//   )
+// }
+// export default CollectionProductList;

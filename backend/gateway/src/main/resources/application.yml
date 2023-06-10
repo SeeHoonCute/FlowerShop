@@ -9,14 +9,22 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: auth-service
-          uri: lb://AUTH-SERVICE
-          predicates:
-            - Path=/auth/**
+#        - id: auth-service
+#          uri: lb://AUTH-SERVICE
+#          predicates:
+#            - Path=/auth/**
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
             - Path=/users/**
+        - id: product-service
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/products/**
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/orders/**
 
 #SpringDoc config
 springdoc:
@@ -26,10 +34,14 @@ springdoc:
   swagger-ui:
     enabled: true
     urls:
-      - name: Auth Service
-        url: auth/v3/api-docs
+#      - name: Auth Service
+#        url: auth/v3/api-docs
       - name: User Service
         url: users/v3/api-docs
+      - name: Product Service
+        url: products/v3/api-docs
+      - name: Order Service
+        url: orders/v3/api-docs
 
 #Eureka config
 eureka:

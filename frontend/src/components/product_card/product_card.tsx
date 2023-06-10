@@ -1,20 +1,3 @@
-export type ProductCardProps = {
-  image: string;
-  link: string;
-  name: string;
-  price: {
-    present: number;
-    original?: number;
-  };
-  shopType: string;
-  address: string;
-  rating: {
-    rate: number;
-    rateCount: number;
-  };
-  soldCount: number;
-};
-
 import {IconShoppingCart, IconHeart, IconShare} from '@tabler/icons-react';
 import {
   Card,
@@ -28,6 +11,7 @@ import {
   createStyles,
   rem, Rating,
 } from '@mantine/core';
+import {ProductCardProps} from "../../pages/products/methods"
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -67,7 +51,7 @@ const ProductCard = (props: ProductCardProps) => {
   const linkProps = {href: 'products/' + props.link, target: '_blank', rel: 'noopener noreferrer'};
 
   return (
-    <Card withBorder radius="md" className={cx(classes.card)}>
+    <Card withBorder radius="md" className={cx(classes.card)} >
       <Card.Section>
         <a {...linkProps}>
           <Image src={props.image} height={250}/>

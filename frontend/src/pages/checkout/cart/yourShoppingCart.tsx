@@ -38,7 +38,7 @@ const ShoppingCart : React.FC<ShoppingCartProps> = ({datas}) => {
         newDataList[index].tamtinh +=newDataList[index].gia
         setDataList(newDataList);
       };
-    
+
     const handle_count_des = (index: number) => {
         const newDataList = [...dataList];
         if (newDataList[index].soluong > 1) {
@@ -47,7 +47,7 @@ const ShoppingCart : React.FC<ShoppingCartProps> = ({datas}) => {
           setDataList(newDataList);
         }
       };
-    
+
 
       const format_money = (money: number): string => {
         return money.toLocaleString('vi', {
@@ -58,7 +58,7 @@ const ShoppingCart : React.FC<ShoppingCartProps> = ({datas}) => {
  
 
     const rows = datas.map((data) => (
-        <tr key={data.id}>    
+        <tr key={data.id}>
           <td> <Image src={data.img} height ={100} radius="md"/> </td>
           <td>{data.sanpham}</td>
           <td>{format_money(data.gia)}</td>
@@ -73,7 +73,7 @@ const ShoppingCart : React.FC<ShoppingCartProps> = ({datas}) => {
                                     <IconMinus onClick={() => handle_count_des(data.id)} cursor={"pointer"}/>
                                     </Grid.Col>
             </Grid>
-            
+
             </td>
           <td><Flex
               mih={50}
@@ -82,7 +82,7 @@ const ShoppingCart : React.FC<ShoppingCartProps> = ({datas}) => {
               align="center"
               direction="row"
               wrap="wrap"
-            >{format_money(data.tamtinh)} 
+            >{format_money(data.tamtinh)}
             <CloseButton title="Xóa sản phẩm" size="xl" iconSize={20} />
             </Flex>
             </td>
@@ -96,7 +96,7 @@ const ShoppingCart : React.FC<ShoppingCartProps> = ({datas}) => {
         align="center"
         direction="column"
         >
-          <Title order={1}>Giỏ Hàng của bạn</Title>
+          <Title orderDTO={1}>Giỏ Hàng của bạn</Title>
 
 
         <Table>

@@ -43,7 +43,6 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.md,
   },
 }));
-
 const vnd = new Intl.NumberFormat('vi');
 
 const ProductCard = (props: ProductCardProps) => {

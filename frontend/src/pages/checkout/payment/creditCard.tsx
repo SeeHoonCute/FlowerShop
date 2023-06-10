@@ -41,7 +41,7 @@ const CreditCardForm: React.FC = () => {
   return (
 
     <div style={{ width: '100%', margin: '0 auto' }}>
-    <Title order={3} style={{ marginBottom: '16px' }}>
+    <Title orderDTO={3} style={{ marginBottom: '16px' }}>
       Thanh toán
     </Title>
 
@@ -67,7 +67,7 @@ const CreditCardForm: React.FC = () => {
       <>
 
 <form onSubmit={handleSubmit} style={{ width: '100%', margin: '0 auto' }}>
-      <Title order={3} style={{  display: 'flex', alignItems: 'center', marginBottom: '16px'}} >
+      <Title orderDTO={3} style={{  display: 'flex', alignItems: 'center', marginBottom: '16px'}} >
         <IconCreditCard  size={30} style={{ marginRight: '8px'}} />
         Credit Card
       </Title>
@@ -117,7 +117,7 @@ const CreditCardForm: React.FC = () => {
   </div>
 
 
-   
+
   );
 };
 

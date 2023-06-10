@@ -2,6 +2,7 @@ export type ProductCardProps = {
   image: string;
   link: string;
   name: string;
+
   price: {
     present: number;
     original?: number;
@@ -59,7 +60,6 @@ const useStyles = createStyles((theme) => ({
     marginTop: theme.spacing.md,
   },
 }));
-
 const vnd = new Intl.NumberFormat('vi');
 
 const ProductCard = (props: ProductCardProps) => {

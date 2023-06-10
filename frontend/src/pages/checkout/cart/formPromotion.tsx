@@ -34,7 +34,7 @@ function FormPromotion() {
             </Flex>
 
             <Textarea
-                label="Add a note to your order"
+                label="Add a note to your orderDTO"
                 placeholder="Enter your note here"
                 value={orderNote}
                 onChange={handleOrderNoteChange}

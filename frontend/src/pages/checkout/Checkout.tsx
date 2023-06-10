@@ -59,21 +59,21 @@ function Checkout_form(){
           email: '',
           termsOfService: false,
         },
-    
+
         validate: {
           email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
         },
       });
-    
+
       return (
 
         <div className="App">
 
         <Grid grow gutter="xs" maw={600}>
             <Grid.Col span={10}>
-             <Title order={3}>Chi tiết hóa đơn</Title>
+             <Title orderDTO={3}>Chi tiết hóa đơn</Title>
             </Grid.Col>
-            
+
             <Grid.Col span={5}>
             <TextInput
                 placeholder="Tên"
@@ -103,7 +103,7 @@ function Checkout_form(){
                 />
             </Grid.Col>
             <Grid.Col span={10}>
-                
+
             <TextInput
                   withAsterisk
                   label="Đất nước"
@@ -139,16 +139,16 @@ function Checkout_form(){
                   {...form.getInputProps('phonenumber')}
                 />
 
-            </Grid.Col>       
+            </Grid.Col>
             </Grid>
-          
+
 
             <Grid grow gutter="xs" maw={600}>
             <Grid.Col span={10}>
-             <Title order={3}>Thông tin thêm</Title>
+             <Title orderDTO={3}>Thông tin thêm</Title>
             </Grid.Col>
 
-            <Grid.Col span={10}>             
+            <Grid.Col span={10}>
             <Textarea
                     withAsterisk
                     variant="filled"
@@ -176,7 +176,7 @@ function Checkout_bill(){
     )
 
     const rows = datas.map((data) => (
-        <tr key={data.id}>    
+        <tr key={data.id}>
           <td>{data.sanpham} x {data.soluong}</td>
 
           <td>{convert(data.tamtinh)}</td>
@@ -199,36 +199,36 @@ function Checkout_bill(){
           <tbody>
           <tr>
             <td> Tạm Tính </td>
-            <td> {convert(tamtinh)} </td>    
-                
+            <td> {convert(tamtinh)} </td>
+
             </tr>
 
             <tr>
             <td> Tổng cộng</td>
             <td> {convert(totals)} </td>
             </tr>
-            
+
             </tbody>
         </Table>
 
     <Button fullWidth
-                type="submit" 
+                type="submit"
                 >Submit</Button>
         </Box>
-        
+
     );
 }
 
 function Checkout(){
   return(
-    <div className="flex-container" 
+    <div className="flex-container"
     style={{
       display:"flex",
     }}>
       <Checkout_form/>
       <Checkout_bill/>
     </div>
-    
+
   );
 }
 

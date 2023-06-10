@@ -1,11 +1,10 @@
 import {SimpleGrid} from "@mantine/core";
 import ProductCard, {ProductCardProps} from "../product_card/product_card";
-import image from "../../assets/images/bo-hoa-hong-1.jpg";
 import {useEffect, useState} from "react";
-
+import FlowerImg from "../../assets/img/FlowerImg/hoa.webp";
 const mockProducts: ProductCardProps[] = [
   {
-    image: image,
+    image: FlowerImg,
     link: "aaa",
     name: "Đoá hoa hồng siêu to",
     price: {
@@ -21,8 +20,8 @@ const mockProducts: ProductCardProps[] = [
     soldCount: 2000,
   },
   {
-    image: image,
-    link: "aaa",
+    image: FlowerImg,
+    link: "#",
     name: "Đoá hoa hồng siêu to",
     price: {
       present: 100000,
@@ -37,8 +36,8 @@ const mockProducts: ProductCardProps[] = [
     soldCount: 2000,
   },
   {
-    image: image,
-    link: "aaa",
+    image: FlowerImg,
+    link: "#",
     name: "Đoá hoa hồng siêu to",
     price: {
       present: 100000,
@@ -53,8 +52,8 @@ const mockProducts: ProductCardProps[] = [
     soldCount: 2000,
   },
   {
-    image: image,
-    link: "aaa",
+    image: FlowerImg,
+    link: "#",
     name: "Đoá hoa hồng siêu to",
     price: {
       present: 100000,
@@ -69,8 +68,8 @@ const mockProducts: ProductCardProps[] = [
     soldCount: 2000,
   },
   {
-    image: image,
-    link: "aaa",
+    image: FlowerImg,
+    link: "#",
     name: "Đoá hoa hồng siêu to",
     price: {
       present: 100000,
@@ -85,167 +84,7 @@ const mockProducts: ProductCardProps[] = [
     soldCount: 2000,
   },
   {
-    image: image,
-    link: "aaa",
-    name: "Đoá hoa hồng siêu to",
-    price: {
-      present: 100000,
-      original: 200000,
-    },
-    shopType: "Chính hãng",
-    address: "Hà Nội",
-    rating: {
-      rate: 3,
-      rateCount: 200,
-    },
-    soldCount: 2000,
-  },
-  {
-    image: image,
-    link: "aaa",
-    name: "Đoá hoa hồng siêu to",
-    price: {
-      present: 100000,
-      original: 200000,
-    },
-    shopType: "Chính hãng",
-    address: "Hà Nội",
-    rating: {
-      rate: 3,
-      rateCount: 200,
-    },
-    soldCount: 2000,
-  },
-  {
-    image: image,
-    link: "aaa",
-    name: "Đoá hoa hồng siêu to",
-    price: {
-      present: 100000,
-      original: 200000,
-    },
-    shopType: "Chính hãng",
-    address: "Hà Nội",
-    rating: {
-      rate: 3,
-      rateCount: 200,
-    },
-    soldCount: 2000,
-  },
-  {
-    image: image,
-    link: "aaa",
-    name: "Đoá hoa hồng siêu to",
-    price: {
-      present: 100000,
-      original: 200000,
-    },
-    shopType: "Chính hãng",
-    address: "Hà Nội",
-    rating: {
-      rate: 3,
-      rateCount: 200,
-    },
-    soldCount: 2000,
-  },
-  {
-    image: image,
-    link: "aaa",
-    name: "Đoá hoa hồng siêu to",
-    price: {
-      present: 100000,
-      original: 200000,
-    },
-    shopType: "Chính hãng",
-    address: "Hà Nội",
-    rating: {
-      rate: 3,
-      rateCount: 200,
-    },
-    soldCount: 2000,
-  },
-  {
-    image: image,
-    link: "aaa",
-    name: "Đoá hoa hồng siêu to",
-    price: {
-      present: 100000,
-      original: 200000,
-    },
-    shopType: "Chính hãng",
-    address: "Hà Nội",
-    rating: {
-      rate: 3,
-      rateCount: 200,
-    },
-    soldCount: 2000,
-  },
-  {
-    image: image,
-    link: "aaa",
-    name: "Đoá hoa hồng siêu to",
-    price: {
-      present: 100000,
-      original: 200000,
-    },
-    shopType: "Chính hãng",
-    address: "Hà Nội",
-    rating: {
-      rate: 3,
-      rateCount: 200,
-    },
-    soldCount: 2000,
-  },
-  {
-    image: image,
-    link: "aaa",
-    name: "Đoá hoa hồng siêu to",
-    price: {
-      present: 100000,
-      original: 200000,
-    },
-    shopType: "Chính hãng",
-    address: "Hà Nội",
-    rating: {
-      rate: 3,
-      rateCount: 200,
-    },
-    soldCount: 2000,
-  },
-  {
-    image: image,
-    link: "aaa",
-    name: "Đoá hoa hồng siêu to",
-    price: {
-      present: 100000,
-      original: 200000,
-    },
-    shopType: "Chính hãng",
-    address: "Hà Nội",
-    rating: {
-      rate: 3,
-      rateCount: 200,
-    },
-    soldCount: 2000,
-  },
-  {
-    image: image,
-    link: "aaa",
-    name: "Đoá hoa hồng siêu to",
-    price: {
-      present: 100000,
-      original: 200000,
-    },
-    shopType: "Chính hãng",
-    address: "Hà Nội",
-    rating: {
-      rate: 3,
-      rateCount: 200,
-    },
-    soldCount: 2000,
-  },
-  {
-    image: image,
+    image: FlowerImg,
     link: "aaa",
     name: "Đoá hoa hồng siêu to",
     price: {

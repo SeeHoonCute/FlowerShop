@@ -52,7 +52,7 @@ const totals =90000;
 const tamtinh= 90000;
 
 function Checkout_form(){
-    
+
       return (
 
         <div className="App">
@@ -78,14 +78,14 @@ function Checkout_form(){
       </Grid>
 
       <TextInput label="Địa chỉ" placeholder="Nhập địa chỉ" required style={{ marginBottom: '16px' }} />
-          
+
 
       <Grid grow gutter="xs" maw={600}>
       <Grid.Col span={10}>
-        <Title order={3}>Thông tin thêm</Title>
+        <Title orderDTO={3}>Thông tin thêm</Title>
       </Grid.Col>
 
-      <Grid.Col span={10}>             
+      <Grid.Col span={10}>
       <Textarea
               withAsterisk
               variant="filled"
@@ -113,7 +113,7 @@ function Checkout_bill(){
     )
 
     const rows = datas.map((data) => (
-        <tr key={data.id}>    
+        <tr key={data.id}>
           <td>{data.sanpham} x {data.soluong}</td>
 
           <td>{convert(data.tamtinh)}</td>
@@ -136,29 +136,29 @@ function Checkout_bill(){
           <tbody>
           <tr>
             <td> Tạm Tính </td>
-            <td> {convert(tamtinh)} </td>    
-        
+            <td> {convert(tamtinh)} </td>
+
           </tr>
 
             <tr>
                 <td style={{ fontWeight: 700 }}> Tổng cộng</td>
             <td style={{ fontWeight: 700 }}> {convert(totals)} </td>
             </tr>
-            
+
             </tbody>
         </Table>
 
     <Button fullWidth type="submit" color="gray">Đi tới thanh toán</Button>
         </Box>
-        
+
     );
 }
 
 function InfomationForm(){
   return(
-    <div className="flex-container" 
+    <div className="flex-container"
     style={{
-      display:"flex", justifyContent: "center", alignItems: "center" 
+      display:"flex", justifyContent: "center", alignItems: "center"
     }}>
 
     <Flex gap="xl">
@@ -166,7 +166,7 @@ function InfomationForm(){
       <Checkout_bill/>
     </Flex>
     </div>
-    
+
   );
 }
 

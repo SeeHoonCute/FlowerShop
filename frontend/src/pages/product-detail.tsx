@@ -30,7 +30,7 @@ export const ProductDetail = () => {
           </Grid.Col>
           <Grid.Col span={6}>
             <Stack>
-              <Title order={1}>Bó hoa hồng</Title><Title order={3}>
+              <Title orderDTO={1}>Bó hoa hồng</Title><Title orderDTO={3}>
               <Grid>
                 <Grid.Col span={2}>
                   Giá:

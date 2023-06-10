@@ -1,7 +1,7 @@
 import {AppShell, useMantineTheme} from "@mantine/core";
 import {Outlet} from 'react-router-dom';
-import Footer from "./components/footer";
-import Header from "./components/header";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
 
 export const Frame = () => {
   const theme = useMantineTheme();
@@ -16,10 +16,13 @@ export const Frame = () => {
         },
       }}
       footer={
-        <Footer/>
+        <Footer data={[]}/>
       }
       header={
-        <Header/>
+        <Header user={{
+          name: "",
+          image: ""
+        }} tabs={[]}/>
       }
     >
       <Outlet></Outlet>

@@ -226,7 +226,7 @@ const FilterBar = () => {
 
   return (
     <Paper w={250} p="md" withBorder>
-      <Title order={3} mb="md">Bộ lọc</Title>
+      <Title orderDTO={3} mb="md">Bộ lọc</Title>
 
       {filterList()}
 

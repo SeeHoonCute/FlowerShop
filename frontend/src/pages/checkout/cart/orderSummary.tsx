@@ -1,6 +1,12 @@
 import { Card, Table, Button, Flex } from '@mantine/core';
 
-function OrderSummary() {
+type StepperProps = {
+  activeStep: number;
+  onStepChange: (nextStep: number) => void;
+};
+
+const OrderSummary: React.FC< StepperProps> = ({onStepChange, activeStep})=> {
+
   return (
     <Card shadow="xs" padding="lg" style={{ maxWidth: 400, backgroundColor: "#f2f3f5" }}>
      <h2>Order Summary</h2>
@@ -26,7 +32,7 @@ function OrderSummary() {
       direction="column">
 
         <Button variant="outline" style={{ width: '100%'}}>Update</Button>
-        <Button color="gray"style={{ width: '100%'}}>Go to Checkout</Button>
+        <Button color="gray"style={{ width: '100%'}}  onClick={() => onStepChange(activeStep + 1)}>Go to Checkout</Button>
         </Flex>
       
     </Card>

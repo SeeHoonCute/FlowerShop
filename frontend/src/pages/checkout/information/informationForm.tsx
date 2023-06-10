@@ -48,6 +48,11 @@ const datas : Data[]=[{
     tamtinh:499000,
 }]
 
+type StepperProps = {
+  activeStep: number;
+  onStepChange: (nextStep: number) => void;
+};
+
 const totals =90000;
 const tamtinh= 90000;
 
@@ -55,7 +60,7 @@ function Checkout_form(){
 
       return (
 
-        <div className="App">
+        <div >
 
         <Grid gutter="sm" style={{ marginBottom: '16px' }}>
         <Grid.Col span={6}>
@@ -103,7 +108,7 @@ function Checkout_form(){
 
 }
 
-function Checkout_bill(){
+const Checkout_bill: React.FC< StepperProps> = ({onStepChange, activeStep})=>{
 
     const convert = (num: number)=>(
         num.toLocaleString('vi', {
@@ -148,13 +153,14 @@ function Checkout_bill(){
             </tbody>
         </Table>
 
-    <Button fullWidth type="submit" color="gray">Đi tới thanh toán</Button>
+    <Button fullWidth type="submit" color="gray" onClick={() => onStepChange(activeStep + 1)}>Đi tới thanh toán</Button>
+    {/* <Button fullWidth variant="outline"onClick={() => onStepChange(activeStep - 1)}>Quay lại</Button> */}
         </Box>
 
     );
 }
 
-function InfomationForm(){
+const InfomationForm: React.FC< StepperProps> = ({onStepChange, activeStep})=>{
   return(
     <div className="flex-container"
     style={{
@@ -163,7 +169,7 @@ function InfomationForm(){
 
     <Flex gap="xl">
       <Checkout_form/>
-      <Checkout_bill/>
+      <Checkout_bill activeStep={activeStep} onStepChange={onStepChange}/>
     </Flex>
     </div>
 

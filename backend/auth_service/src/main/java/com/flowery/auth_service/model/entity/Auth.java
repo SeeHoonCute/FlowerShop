@@ -13,10 +13,16 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "AUTH")
+@Table(name = "AUTH",
+        indexes = {
+                @Index(name = "IDX_AUTH_EMAIL", columnList = "email", unique = true),
+                @Index(name = "IDX_AUTH_GOOGLE_ID", columnList = "googleId", unique = true),
+                @Index(name = "IDX_AUTH_ROLE", columnList = "role"),
+                @Index(name = "IDX_AUTH_STATUS", columnList = "status")
+        })
 public class Auth {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "authId")
     private Long authId;
 

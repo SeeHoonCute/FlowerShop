@@ -1,7 +1,7 @@
 import { useForm } from "@mantine/form";
 // import { IconLock, IconMail } from "@tabler/icons";
-import { FacebookButton } from "./components/socialButtom/socialButtom/facebook/index";
-import { GoogleButton } from "./components/socialButtom/socialButtom/google/index";
+import { FacebookButton } from "../socialButtom/socialButtom/facebook";
+import { GoogleButton } from "../socialButtom/socialButtom/google";
 import { ButtonProps, Checkbox  } from "@mantine/core";
 import { IconLock, IconMail } from "@tabler/icons-react";
 interface AuthenticationButtonProps extends ButtonProps{}
@@ -19,14 +19,19 @@ import {
   TextInput,
   Box
 } from "@mantine/core";
+import {useNavigate} from "react-router-dom";
+import {AuthFirebase} from "../../../../api/firebase/firebase";
 
 export function AuthenticationSignUpForm(props:AuthenticationButtonProps) {
+  const navigate = useNavigate();
+  const authFirebase = new AuthFirebase();
+
   const form = useForm({
     initialValues: {
-      email: 'nguyentri@gmail.com',
+      email: '',
       // name: "",
-      password: 'secret',
-      confirmPassword: 'sevret',
+      password: '',
+      confirmPassword: '',
       termsOfService: false,
     },
 
@@ -55,7 +60,11 @@ export function AuthenticationSignUpForm(props:AuthenticationButtonProps) {
       Start managing your finnace faster and better{" "}
     </Text>
 
-    <form onSubmit={form.onSubmit(() => {})}>
+    <form onSubmit={form.onSubmit(() => {
+      authFirebase.signUp(form.values.email, form.values.password)
+        .then(() => navigate("/"))
+        .catch(() => console.error("Error"));
+    })}>
       <Stack>
         <TextInput
           variant="filled"
@@ -67,7 +76,7 @@ export function AuthenticationSignUpForm(props:AuthenticationButtonProps) {
           size="md"
           style={{ marginTop: "8%" }}
           required
-          placeholder="Seehoon@gmail.com"
+          placeholder="yourEmail@gmail.com"
           value={form.values.email}
           onChange={(event) =>
             form.setFieldValue("email", event.currentTarget.value)
@@ -140,7 +149,7 @@ export function AuthenticationSignUpForm(props:AuthenticationButtonProps) {
         ml={5}
         href="#"
         weight={700}
-        onClick={(event) => event.preventDefault()}
+        onClick={() => navigate("/login")}
       >
         Sign In
       </Anchor>

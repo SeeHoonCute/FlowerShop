@@ -8,6 +8,6 @@ import java.io.Serializable;
 @Embeddable
 @Data
 public class UserShopPK implements Serializable {
-    private Long userEntity;
-    private Long shopEntity;
+    private Long user;
+    private Long shop;
 }

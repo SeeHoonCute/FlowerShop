@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 public class UserDTO {
     Long userId;
+    String userGoogleId;
     String userName;
     String email;
     Gender gender;

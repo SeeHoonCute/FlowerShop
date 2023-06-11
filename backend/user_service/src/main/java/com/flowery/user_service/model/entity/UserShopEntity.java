@@ -18,12 +18,12 @@ public class UserShopEntity {
     @Id
     @ManyToOne
     @JoinColumn(nullable = false, name = "user_id")
-    private UserEntity userEntity;
+    private UserEntity user;
 
     @Id
     @ManyToOne
     @JoinColumn(nullable = false, name = "shop_id")
-    private ShopEntity shopEntity;
+    private ShopEntity shop;
 
     @Column(nullable = false, name = "is_owner")
     private Boolean isOwner;

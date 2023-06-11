@@ -50,6 +50,6 @@ public class ShopEntity {
     @Column(nullable = false, name = "shop_bank_type")
     private String shopBankType;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "shopEntity")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "shop")
     private List<UserShopEntity> userShopEntityList;
 }

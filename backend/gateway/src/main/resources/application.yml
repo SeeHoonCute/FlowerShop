@@ -26,6 +26,24 @@ spring:
           predicates:
             - Path=/orders/**
 
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+
+#  security:
+#    oauth2:
+#      resource-server:
+#        jwt:
+#          jwk-set-uri: https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com
+#          issuer-uri: https://securetoken.google.com/${FIREBASE_PROJECT_ID}
+
+#  main:
+#    web-application-type: reactive
+#    allow-bean-definition-overriding: true
+
 #SpringDoc config
 springdoc:
   api-docs:

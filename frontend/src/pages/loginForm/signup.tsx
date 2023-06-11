@@ -19,11 +19,11 @@ function SignUpForm() {
         }}
       >
         <AuthenticationSignUpForm></AuthenticationSignUpForm>
-        <footer 
+        <footer
           style={{ position: "absolute", bottom: "0px", marginBottom: "10px" }}
         >
           <Text c="dimmed" size="11px" align="center" mt="10%">
-            @ 2022 ALL RIGHTS RESERVED
+            @2023 ALL RIGHTS RESERVED
           </Text>
         </footer>
       </div>

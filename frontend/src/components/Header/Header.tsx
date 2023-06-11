@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import styles from "./styles.module.scss";
 import {
-  createStyles,
   Container,
   Avatar,
   UnstyledButton,
@@ -9,114 +8,49 @@ import {
   Text,
   Menu,
   Tabs,
-  Burger,
   rem,
   TextInput,
-  Code,
   Grid,
   Image,
-  Button
+  Button, useMantineTheme
 } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import {useDisclosure} from '@mantine/hooks';
 import {
   IconLogout,
   IconHeart,
-  IconStar,
-  IconMessage,
-  IconSettings,
-  IconPlayerPause,
-  IconTrash,
-  IconSwitchHorizontal,
   IconChevronDown,
   IconSearch,
   IconShoppingCart
 } from '@tabler/icons-react';
 import SeeHoonLogo from "../../assets/img/SeeHoon.jpg";
-import iconCart from "../../assets/img/IconCart.png";
-
-const useStyles = createStyles((theme) => ({
-  header: {
-    paddingTop: theme.spacing.sm,
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    borderBottom: `${rem(1)} solid ${theme.colorScheme === 'dark' ? 'transparent' : theme.colors.gray[2]
-      }`,
-    marginBottom: rem(20),
-  },
-
-  mainSection: {
-    paddingBottom: theme.spacing.sm,
-    margin: rem(10),
-  },
-
-  user: {
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
-    padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
-    borderRadius: theme.radius.sm,
-    transition: 'background-color 100ms ease',
-
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
-    },
-
-    [theme.fn.smallerThan('xs')]: {
-      display: 'none',
-    },
-  },
-
-  burger: {
-    [theme.fn.largerThan('xs')]: {
-      display: 'none',
-    },
-  },
-
-  userActive: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
-  },
-
-  tabs: {
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none',
-    },
-  },
-
-  tabsList: {
-    borderBottom: '0 !important',
-  },
-
-  searchCode: {
-    fontWeight: 700,
-    fontSize: rem(10),
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
-    border: `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[2]
-      }`,
-    marginTop: rem(10),
-  },
-
-  tab: {
-    fontWeight: 500,
-    height: rem(38),
-    backgroundColor: 'transparent',
-
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
-    },
-
-    '&[data-active]': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-      borderColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[2],
-    },
-  },
-}));
+import {AuthFirebase} from "../../api/firebase/firebase";
+import {IconUser} from "@tabler/icons-react";
+import {getAuth} from "firebase/auth";
+import {useNavigate} from "react-router-dom";
 
 interface HeaderTabsProps {
   user: { name: string; image: string };
   tabs: string[];
 }
 
-function HeaderTabs({ user, tabs }: HeaderTabsProps) {
-  const { classes, theme, cx } = useStyles();
-  const [opened, { toggle }] = useDisclosure(false);
+function HeaderTabs({user, tabs}: HeaderTabsProps) {
+  const theme = useMantineTheme();
+  const [opened, {toggle}] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const firebaseAuth = new AuthFirebase();
+  const auth = getAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setLoggedIn(true);
+      } else {
+        setLoggedIn(false);
+      }
+    });
+  })
 
   const items = tabs.map((tab) => (
     <Tabs.Tab value={tab} key={tab}>
@@ -129,30 +63,32 @@ function HeaderTabs({ user, tabs }: HeaderTabsProps) {
       <Container className={styles.mainSection} fluid p="xs">
         <Grid m={0}>
           <Grid.Col span="content">
-            <Group>
-              <Image maw={40} mx="auto" radius="md" src={SeeHoonLogo} alt="SeeHoon Logo" />
-              <Text component="span" size="xl" className={styles.titleLogo}>SeeHoon Flower</Text>
+            <Group onClick={() => navigate("/")} style={{cursor: "pointer"}}>
+              <Image maw={40} mx="auto" radius="md" src={SeeHoonLogo} alt="SeeHoon Logo"/>
+              <Text component="span" size="xl" className={styles.titleLogo} weight={700}>Flowery</Text>
             </Group>
           </Grid.Col>
-          <Grid.Col span="auto" px={"10rem"}>
+          <Grid.Col span="auto" px={"md"}>
             <TextInput
               placeholder="Tìm kiếm"
               size="md"
-              icon={<IconSearch size="0.8rem" stroke={1.5} />}
+              icon={<IconSearch size="0.8rem" stroke={1.5}/>}
               rightSectionWidth={100}
-              styles={{ rightSection: { pointerEvents: 'none' } }}
+              styles={{rightSection: {pointerEvents: 'none'}}}
               className={styles.searchButton}
+              maw={900}
+              mx="auto"
             />
           </Grid.Col>
           <Grid.Col span="content">
             <Group>
-              <Button bg='#8a8686'className={styles.Button}>
-            <IconShoppingCart/>
-            </Button>
+              <Button bg='#8a8686' className={styles.Button}>
+                <IconShoppingCart/>
+              </Button>
               <Menu
                 width={260}
                 position="bottom-end"
-                transitionProps={{ transition: 'pop-top-right' }}
+                transitionProps={{transition: 'pop-top-right'}}
                 onClose={() => setUserMenuOpened(false)}
                 onOpen={() => setUserMenuOpened(true)}
                 withinPortal
@@ -162,50 +98,40 @@ function HeaderTabs({ user, tabs }: HeaderTabsProps) {
                     // className={cx(classes.user, { [classes.userActive]: userMenuOpened })}
                   >
                     <Group spacing={7}>
-                      <Avatar src={user.image} alt={user.name} radius="xl" size={"md"} />
-                      <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
-                        {user.name}
+                      <Avatar src={user.image} alt={user.name} radius="xl" size={"md"}/>
+                      <Text weight={500} size="sm" sx={{lineHeight: 1}} mr={3}>
+                        {auth.currentUser?.displayName}
                       </Text>
                       <IconChevronDown size={rem(12)} stroke={1.5}/>
                     </Group>
                   </UnstyledButton>
                 </Menu.Target>
-                <Menu.Dropdown>
-                  <Menu.Item
-                    icon={<IconHeart size="0.9rem" color={theme.colors.red[6]} stroke={1.5} />}
-                  >
-                    Thích
-                  </Menu.Item>
-                  <Menu.Item
-                    icon={<IconStar size="0.9rem" color={theme.colors.yellow[6]} stroke={1.5} />}
-                  >
-                    Đã lưu
-                  </Menu.Item>
-                  <Menu.Item
-                    icon={<IconMessage size="0.9rem" color={theme.colors.blue[6]} stroke={1.5} />}
-                  >
-                    Bình luận
-                  </Menu.Item>
+                {loggedIn ?
+                  <Menu.Dropdown>
+                    <Menu.Item
+                      icon={<IconHeart size="0.9rem" color={theme.colors.red[6]} stroke={1.5}/>}
+                    >
+                      Sản phẩm yêu thích
+                    </Menu.Item>
 
-                  <Menu.Label>Cài đặt</Menu.Label>
-                  <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>
-                    Cài đặt tài khoản
-                  </Menu.Item>
-                  <Menu.Item icon={<IconSwitchHorizontal size="0.9rem" stroke={1.5} />}>
-                    Thay đổi tài khoản
-                  </Menu.Item>
-                  <Menu.Item icon={<IconLogout size="0.9rem" stroke={1.5} />}>Đăng xuất</Menu.Item>
+                    <Menu.Item icon={<IconUser size="0.9rem" stroke={1.5}/>}>
+                      Thông tin cá nhân
+                    </Menu.Item>
 
-                  <Menu.Divider />
-
-                  <Menu.Label>Cần xem xét kỹ</Menu.Label>
-                  <Menu.Item icon={<IconPlayerPause size="0.9rem" stroke={1.5} />}>
-                    Tạm dừng đăng ký
-                  </Menu.Item>
-                  <Menu.Item color="red" icon={<IconTrash size="0.9rem" stroke={1.5} />}>
-                    Xóa tài khoản
-                  </Menu.Item>
-                </Menu.Dropdown>
+                    <Menu.Item icon={<IconLogout size="0.9rem" stroke={1.5}/>} onClick={() => {
+                      firebaseAuth.signOut()
+                    }}>Đăng xuất</Menu.Item>
+                  </Menu.Dropdown>
+                  :
+                  <Menu.Dropdown>
+                    <Menu.Item onClick={() => navigate("/login")}>
+                      Đăng nhập
+                    </Menu.Item>
+                    <Menu.Item onClick={() => navigate("/signup")}>
+                      Đăng ký
+                    </Menu.Item>
+                  </Menu.Dropdown>
+                }
               </Menu>
             </Group>
           </Grid.Col>
@@ -214,4 +140,5 @@ function HeaderTabs({ user, tabs }: HeaderTabsProps) {
     </div>
   );
 }
+
 export default HeaderTabs

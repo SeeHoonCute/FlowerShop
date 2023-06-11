@@ -42,8 +42,8 @@ const ProductsList = ({ page, size, setTotalPage }: { page: number ; size: numbe
             const cardPropsData: ProductCardProps = {
               // id: product.productId,
               // image: product.mainImage,
-              image:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Bachelor%27s_button%2C_Basket_flower%2C_Boutonniere_flower%2C_Cornflower_-_3.jpg/640px-Bachelor%27s_button%2C_Basket_flower%2C_Boutonniere_flower%2C_Cornflower_-_3.jpg",
-              link: product.mainImage, // Cập nhật link dựa trên nguồn dữ liệu
+              image:product.mainImage,
+              link: "1", // Cập nhật link dựa trên nguồn dữ liệu
               name: product.productName,
               price: {
                 present: product.Price * 0.9, // Kiểm tra chính xác tên thuộc tính của giá

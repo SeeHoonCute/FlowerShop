@@ -10,6 +10,7 @@ import com.flowery.user_service.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,7 +34,12 @@ public class UserServiceImpl implements UserService {
     public UserDTO getUserById(Long userId) throws Exception {
         return userRepository.findById(userId)
                 .map(userMapper::mapToUserDTO)
-                .orElseThrow(() -> new Exception("User not found"));
+                .orElse(new UserDTO());
+    }
+
+    public Long getUserByGoogleId(String googleId) throws Exception {
+        Optional<UserEntity> userEntity = userRepository.findByUserGoogleId(googleId);
+        return userEntity.map(UserEntity::getUserId).orElse(null);
     }
 
     public Long createUser(UserDTO userDTO) throws Exception {

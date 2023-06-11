@@ -19,7 +19,7 @@ const data: Data[] = [
     variantId: "V1",
     productId: "P1",
     imageId: "I1",
-    variantName: "Hoa hồng đỏ",
+    variantName: "Hoa VS-0088",
     price: 25.99,
     quantity: 10,
     discount: new Float32Array([0.1, 0.2, 0.3]),

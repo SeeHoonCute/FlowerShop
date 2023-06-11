@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface UserService {
     List<UserListDTO> getAllUsers();
+    Long getUserByGoogleId(String googleId) throws Exception;
     UserDTO getUserById(Long userId) throws Exception;
     Long createUser(UserDTO userDTO) throws Exception;
     Long updateUser(Long userId, UserDTO userDTO) throws Exception;

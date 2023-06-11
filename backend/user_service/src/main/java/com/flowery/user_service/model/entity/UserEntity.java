@@ -22,6 +22,9 @@ public class UserEntity {
     @Column(nullable = false, unique = true, name = "user_id")
     private Long userId;
 
+    @Column(name = "user_google_id")
+    private String userGoogleId;
+
     @Column(nullable = false, name = "user_name")
     private String userName;
 
@@ -41,9 +44,9 @@ public class UserEntity {
     @Column(nullable = false, name = "status")
     private Status status;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "userEntity")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     private List<UserShopEntity> userShopEntityList;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "userEntity")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     private List<UserLocationEntity> userLocationEntityList;
 }

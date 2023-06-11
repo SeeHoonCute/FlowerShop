@@ -80,11 +80,12 @@ function HeaderTabs({user, tabs}: HeaderTabsProps) {
               mx="auto"
             />
           </Grid.Col>
-          <Grid.Col span="content">
+          <Grid.Col span="content" >
             <Group>
-              <Button bg='#8a8686' className={styles.Button}>
-                <IconShoppingCart/>
-              </Button>
+              <Button bg='#8a8686'className={styles.Button}>
+                <a href="http://localhost:5173/checkout"><IconShoppingCart/></a>
+            
+            </Button>
               <Menu
                 width={260}
                 position="bottom-end"
@@ -114,8 +115,17 @@ function HeaderTabs({user, tabs}: HeaderTabsProps) {
                       Sản phẩm yêu thích
                     </Menu.Item>
 
-                    <Menu.Item icon={<IconUser size="0.9rem" stroke={1.5}/>}>
-                      Thông tin cá nhân
+                  <Menu.Label>Cài đặt</Menu.Label>
+                  <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>
+                    Cài đặt tài khoản
+                  </Menu.Item>
+                  <Menu.Item icon={<IconSwitchHorizontal size="0.9rem" stroke={1.5} />}>
+                    Thay đổi tài khoản
+                  </Menu.Item>
+                  <Menu.Item icon={<IconLogout size="0.9rem" stroke={1.5} />}>
+                    <a href="http://localhost:5173/signup">
+                    Đăng xuất
+                    </a>
                     </Menu.Item>
 
                     <Menu.Item icon={<IconLogout size="0.9rem" stroke={1.5}/>} onClick={() => {

@@ -115,17 +115,10 @@ function HeaderTabs({user, tabs}: HeaderTabsProps) {
                       Sản phẩm yêu thích
                     </Menu.Item>
 
-                  <Menu.Label>Cài đặt</Menu.Label>
-                  <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>
-                    Cài đặt tài khoản
-                  </Menu.Item>
-                  <Menu.Item icon={<IconSwitchHorizontal size="0.9rem" stroke={1.5} />}>
-                    Thay đổi tài khoản
-                  </Menu.Item>
-                  <Menu.Item icon={<IconLogout size="0.9rem" stroke={1.5} />}>
-                    <a href="http://localhost:5173/signup">
-                    Đăng xuất
-                    </a>
+                    <Menu.Item icon={<IconUser size="0.9rem" stroke={1.5}/>} onClick={() => {
+                      navigate("/user")
+                    }}>
+                      Thông tin cá nhân
                     </Menu.Item>
 
                     <Menu.Item icon={<IconLogout size="0.9rem" stroke={1.5}/>} onClick={() => {

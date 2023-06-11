@@ -84,8 +84,8 @@ const FeaturesCard = (props: ProductProps) => {
 
       </Group>
       <Card.Section className={classes.section}>
-        <Group spacing={30}>
-          <div>
+        {/* <Group className={Styles.edition}> */}
+          <div className={Styles.edition}>
           <Text fz="xl" fw={700} sx={{ lineHeight: 1 }} className={Styles.description}>
               {vnd.format(props.price.present)}đ
             </Text>
@@ -95,7 +95,7 @@ const FeaturesCard = (props: ProductProps) => {
             </Text>
             <Badge variant="outline" className={Styles.ColorFont} {...linkProps}>-{props.discount}%</Badge>
           </Group>
-            <Text fz="sm" lineClamp={4}>
+            {/* <Text fz="sm" lineClamp={4}> */}
               <Group position="apart" mt="md" className={Styles.fontSize}>
                 <div>
                 <Rating value={props.rating.rate} fractions={2} readOnly size="xs"/>
@@ -103,9 +103,9 @@ const FeaturesCard = (props: ProductProps) => {
                 <Text mr="xs" color="dimmed"> ({props.rating.rateCount}) </Text>
               </Group>
 
-            </Text>
+            {/* </Text> */}
           </div>
-        </Group>
+        {/* </Group> */}
       </Card.Section>
     </Card>
 

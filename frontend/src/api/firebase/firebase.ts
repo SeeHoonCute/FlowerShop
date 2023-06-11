@@ -55,7 +55,7 @@ export class AuthFirebase {
           gender: "UNKNOWN",
         }).then((response) => {
           localStorage.setItem("uid", response.data)
-          console.info("User created")
+          console.info("UserDetail created")
           return user;
         })
         return user;
@@ -72,7 +72,7 @@ export class AuthFirebase {
           return this.verify(userCredential.user)
             .then((user) => user.getIdToken());
         } else {
-          throw new Error("User not created");
+          throw new Error("UserDetail not created");
         }
       })
       .then((token) => localStorage.setItem("token", token))
@@ -94,11 +94,11 @@ export class AuthFirebase {
             userImageUrl: userCredential.user?.photoURL ?? "",
             gender: "UNKNOWN",
           }).then(() => {
-            console.info("User created")
+            console.info("UserDetail created")
             return userCredential.user?.getIdToken()
           })
         } else {
-          throw new Error("User not created");
+          throw new Error("UserDetail not created");
         }
       })
       .then((token) => localStorage.setItem("token", token))
@@ -113,7 +113,7 @@ export class AuthFirebase {
     return getCurrentUser()
       .then((user) => {
         if (!user) {
-          throw new Error("User not authenticated");
+          throw new Error("UserDetail not authenticated");
         }
         user.getIdTokenResult(false)
           .then((idTokenResult) => {
@@ -131,7 +131,7 @@ export class AuthFirebase {
             .then((idTokenResult) => new Date(idTokenResult.expirationTime) > new Date())
           return !!isInSession;
         } else {
-          throw new Error("User not authenticated");
+          throw new Error("UserDetail not authenticated");
         }
       })
   }

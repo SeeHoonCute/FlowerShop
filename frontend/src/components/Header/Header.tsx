@@ -114,7 +114,9 @@ function HeaderTabs({user, tabs}: HeaderTabsProps) {
                       Sản phẩm yêu thích
                     </Menu.Item>
 
-                    <Menu.Item icon={<IconUser size="0.9rem" stroke={1.5}/>}>
+                    <Menu.Item icon={<IconUser size="0.9rem" stroke={1.5}/>} onClick={() => {
+                      navigate("/user")
+                    }}>
                       Thông tin cá nhân
                     </Menu.Item>
 

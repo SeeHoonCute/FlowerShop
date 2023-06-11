@@ -7,6 +7,7 @@ import Payment from "./pages/checkout/payment/payment";
 import LoginForm from "./pages/loginForm/login";
 import SignUpForm from "./pages/loginForm/signup";
 import Stepper_cart from "./pages/checkout/Stepper";
+import UserSummary from "./pages/user-summary/user-summary";
 
 export const routes: RouteObject[] = [
   {
@@ -42,6 +43,10 @@ export const routes: RouteObject[] = [
         path: "checkout",
         element: <Stepper_cart/>
       },
+      {
+        path: "user",
+        element: <UserSummary/>
+      }
     ]
   },
 ];

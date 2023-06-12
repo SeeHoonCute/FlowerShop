@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  service-registry:
+    build: .
+    ports:
+      - 8761:8761
+    networks:
+      - service-registry-net
+networks:
+  service-registry-net:
+    name: service-registry
+    external: true

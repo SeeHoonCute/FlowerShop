@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  order-service:
+    build: .
+    ports:
+      - 8083:8083
+    networks:
+      - order-net
+networks:
+  order-net:
+    name: order
+    external: true

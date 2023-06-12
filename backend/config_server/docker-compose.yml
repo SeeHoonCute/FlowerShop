@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  config-server:
+    build: .
+    ports:
+      - 8888:8888
+    networks:
+      - config-net
+networks:
+  config-net:
+    name: config
+    external: true

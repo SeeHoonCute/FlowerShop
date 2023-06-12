@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  user-service:
+    build: .
+    ports:
+      - 8081:8081
+    networks:
+      - user-net
+networks:
+  user-net:
+    name: user
+    external: true

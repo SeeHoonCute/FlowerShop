@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  gateway-server:
+    build: .
+    ports:
+      - 8000:8000
+    networks:
+      - gateway-net
+networks:
+  gateway-net:
+    name: gateway
+    external: true

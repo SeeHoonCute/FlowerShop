@@ -1,21 +1,24 @@
-import {Paper, Title, Text, Button, Card, TextInput, Group} from "@mantine/core";
-import {useState} from "react";
+import {Paper, Title, Text, Button, Card, TextInput, Group, Skeleton} from "@mantine/core";
+import {useEffect, useRef, useState} from "react";
+import {UserLocationDTO, UserLocationApi} from "../../api/user-location/user-location";
 
 const UserLocation = () => {
-  const [userLocation, setUserLocation] = useState<{ address: string, phone: string }[]>([
-    {
-      address: "123/4/5 Nguyễn Văn Cừ, Quận 1, TP.HCM",
-      phone: "0123456789"
-    },
-    {
-      address: "51/4L Đông Lân, Bà Điểm, Hóc Môn, TP.HCM",
-      phone: "0123456789"
-    }
-  ]);
+  const [userLocation, setUserLocation] = useState<UserLocationDTO[]>();
+
+  const userLocationApi = new UserLocationApi();
+  const newAddressRef = useRef<HTMLInputElement>(null);
+  const newPhoneRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    userLocationApi.getUserLocation((localStorage.getItem("uid") || "") as unknown as number)
+      .then((res) => {
+        setUserLocation(res);
+      })
+  }, [])
 
   const [isAddingLocation, setIsAddingLocation] = useState(false);
 
-  const locationList = userLocation.map((location, index) => {
+  const locationList = userLocation?.map((location, index) => {
     return (
       <Card
         withBorder
@@ -28,19 +31,29 @@ const UserLocation = () => {
           Địa chỉ
         </Text>
         <Text fz="md" fw={500} c={"dark.4"}>
-          {location.address}
+          {location.locationAddress}
         </Text>
         <Text fz="sm" tt="uppercase" fw={400} c="dimmed" mt={"sm"}>
           Số điện thoại
         </Text>
         <Text fz="md" fw={500} c={"dark.4"}>
-          {location.phone}
+          {location.locationPhone}
         </Text>
       </Card>
     )
   })
 
-  const addLocation = () => {
+  const addLocation = async () => {
+    const newLocation: UserLocationDTO = {
+      locationAddress: newAddressRef.current?.value ?? "",
+      locationPhone: newPhoneRef.current?.value ?? "",
+    }
+    setUserLocation([...userLocation??[], newLocation]);
+    const res = await userLocationApi.postUserLocation(newLocation);
+    console.log(res);
+  }
+
+  const renderAddLocation = () => {
     return (
       <Card
         withBorder
@@ -48,8 +61,11 @@ const UserLocation = () => {
         w="100%"
         mt={"md"}
       >
-        <TextInput label="Địa chỉ của bạn" placeholder="123 Đường ABC Phường DEF Quận GHI Tỉnh JKL"/>
-        <TextInput label="Số đện thoại" placeholder="0123456789"/>
+        <form>
+          <TextInput label="Địa chỉ của bạn" placeholder="123 Đường ABC Phường DEF Quận GHI Tỉnh JKL"
+                     ref={newAddressRef}/>
+          <TextInput label="Số đện thoại" placeholder="0123456789" ref={newPhoneRef}/>
+        </form>
       </Card>
     )
   }
@@ -57,11 +73,22 @@ const UserLocation = () => {
   return (
     <>
       <Title order={3}>Danh sách địa chỉ</Title>
+      <Skeleton visible={locationList === undefined} mt={"md"} w={"100%"} h={150} radius={"md"}
+                display={locationList === undefined? "block" : "none"}>
+      </Skeleton>
       {locationList}
-      {isAddingLocation && addLocation()}
+      {isAddingLocation && renderAddLocation()}
       <Group position="right">
-        {isAddingLocation && <Button radius="md" mt="md" color={"gray"} variant={"outline"} onClick={() => setIsAddingLocation(false)}>Huỷ</Button>}
-        <Button radius="md" mt="md" onClick={() => setIsAddingLocation(true)}>Thêm địa chỉ</Button>
+        {isAddingLocation && <Button radius="md" mt="md" color={"gray"} variant={"outline"}
+                                     onClick={() => setIsAddingLocation(false)}>Huỷ</Button>}
+        <Button radius="md" mt="md" onClick={() => {
+          if (isAddingLocation) {
+            addLocation()
+            console.log("add location");
+            console.log(userLocation)
+          } else
+            setIsAddingLocation(true)
+        }}>Thêm địa chỉ</Button>
       </Group>
     </>
   )

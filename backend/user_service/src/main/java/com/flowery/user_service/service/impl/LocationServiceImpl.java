@@ -1,7 +1,7 @@
 package com.flowery.user_service.service.impl;
 
+import com.flowery.user_service.model.dto.UserDTO;
 import com.flowery.user_service.model.dto.UserLocationDTO;
-import com.flowery.user_service.model.entity.UserEntity;
 import com.flowery.user_service.model.entity.UserLocationEntity;
 import com.flowery.user_service.model.mapper.UserLocationMapper;
 import com.flowery.user_service.model.mapper.UserMapper;
@@ -25,6 +25,8 @@ public class LocationServiceImpl implements LocationService {
     }
 
     public Long addLocation(Long userId, UserLocationDTO userLocationDTO) {
+        userLocationDTO.setUser(new UserDTO());
+        userLocationDTO.getUser().setUserId(userId);
         UserLocationEntity userLocationEntity = userLocationMapper.mapToUserLocationEntity(userLocationDTO);
         userLocationEntity.setUser(userMapper.mapToUserEntity(userLocationDTO.getUser()));
         UserLocationEntity savedUserLocationEntity = userLocationRepository.save(userLocationEntity);

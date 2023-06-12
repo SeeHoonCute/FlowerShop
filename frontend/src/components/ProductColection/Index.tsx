@@ -20,6 +20,7 @@ import HoaMauDon from "../../assets/img/FlowerCollection/HoaMauDon.jpg"
 import HoaCatTuong from "../../assets/img/FlowerCollection/HoaCatTuong.jpg"
 import HoaCucHoaMi from "../../assets/img/FlowerCollection/HoaCucHoaMi.jpg"
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export type ColectionCard = {
   title: string,
@@ -37,7 +38,7 @@ const mockdata :ColectionCard[] = [
   // { title: 'Hoa SeeHoon', icon: IconPlant, color: 'pink' },
   // { title: 'Hoa SeeHoon', icon: IconPlant, color: 'red' },
   // { title: 'Hoa SeeHoon', icon: IconPlant, color: 'orange' },
-  { title: 'Hoa Hồng', image: HoaHong, link: "#"},
+  { title: 'Hoa Hồng', image: HoaHong, link: "http://localhost:5173/products"},
   { title: 'Hoa Hải Đường', image: HoaHaiDuong, link: "#"},
   { title: 'Hoa Tulip', image: HoaTulip,link: "#"},
   { title: 'Hoa Hướng Dương', image: HoaHuongDuong, link: "#"},
@@ -81,16 +82,18 @@ const useStyles = createStyles((theme) => ({
 function ActionsGrid() {
   const { classes, theme } = useStyles();
   const [collection, setCollection] = useState<ColectionCard[]>([]);
-
+  const navigator = useNavigate();
+  // const linkProps = {href: '/' + mockdata.link, rel: 'noopener noreferrer'};
   useEffect(() => {
     setCollection(mockdata);
   }, []);
   const items = mockdata.map((item) => (
     <UnstyledButton key={item.title} className={classes.item}>
-      <Image src={item.image} height={170}></Image>
-      <Text size="xs" mt={7}>
-        {item.title}
-      </Text>
+        <Image src={item.image} height={170} onClick={()=>navigator("/products")}></Image>
+        <Text size="xs" mt={7}>
+            {item.title}
+          </Text>
+
     </UnstyledButton>
   ));
   return (

@@ -34,6 +34,7 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    // height: 200,
     // borderBottom: `${rem(1)} solid ${
     //   theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
     // }`,
@@ -68,13 +69,13 @@ const useStyles = createStyles((theme) => ({
 const vnd = new Intl.NumberFormat('vi');
 const FeaturesCard = (props: ProductProps) => {
   const {classes, cx, theme} = useStyles();
-  const linkProps = {href: 'products/' + props.link, target: '_blank', rel: 'noopener noreferrer'};
+  const linkProps = {href: 'products/' + props.link, rel: 'noopener noreferrer'};
 
   return (
     <Card withBorder radius="md" className={Styles.card}>
       <Card.Section className={classes.imageSection}>
         <a {...linkProps}>
-        <Image src={props.image}/>
+        <Image className={Styles.image} src={props.image}/>
         </a>
       </Card.Section>
       <Group position="apart" mt="md" className={Styles.fontSize}>

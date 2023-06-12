@@ -5,6 +5,7 @@ import Banner from "../../components/Banner/Banner";
 import CollectionProductList from "../../components/ProductColection/Index";
 import CodeCatalog from "../../components/CodeCatalog/Index";
 import { Title } from "@mantine/core";
+import ProductsList from "../../components/product_list/product_list";
 export const Home = () => {
 return(
   <div className={Styles.HomeSection}>

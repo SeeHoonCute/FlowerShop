@@ -17,9 +17,11 @@ public class PaymentEntity {
     @Column(name = "paymentID", nullable = false)
     private Long paymentID;
 
-    @OneToOne(targetEntity = OrderEntity.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "orderID", referencedColumnName = "orderID")
+//    @OneToOne(targetEntity = OrderEntity.class, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "orderID", referencedColumnName = "orderID")
+    @Column(name = "order_ID")
     private OrderEntity order;
+
 
     @Column(name = "paymentMethod")
     private String paymentMethod;
@@ -33,4 +35,8 @@ public class PaymentEntity {
 
     @Column(name = "paymentStatus")
     private String paymentStatus;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="orderID")
+    private OrderEntity orderEntity;
 }

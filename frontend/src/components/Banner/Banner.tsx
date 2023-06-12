@@ -55,7 +55,8 @@ function Banner() {
 
   const slides = images.map((image) => (
     <Carousel.Slide key={image} className={Styles.Slider}>
-      <Image className={Styles.Img} src={image} height={500} />
+      {/* <Image className={Styles.Img} src={image} height={500} /> */}
+      <img src={image} className={Styles.Img} height={500}></img>
     </Carousel.Slide>
   ));
 

@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import {axios} from "../../api/axios/axios-config";
 
 export interface Product {
     productId: string;
@@ -12,7 +13,7 @@ export interface Product {
     status: string;
     Price: number;
   }
-  
+
   export interface Rating {
     ratingId: string;
     userId: string;
@@ -21,7 +22,7 @@ export interface Product {
     ratingValue: number;
     createdAt: string;
   }
-  
+
 export  interface ProductCardProps {
     // id: string,
     image: string;
@@ -41,20 +42,20 @@ export  interface ProductCardProps {
   };
 
 
-  
+
   export async function getProductData(page: number, size: number) {
     try {
-      const response = await axios.get(`http://localhost:8000/products?page=${page}&size=${size}`);
+      const response = await axios.get(`/products?page=${page}&size=${size}`);
       return response.data;
     } catch (error) {
       console.error('Error retrieving product data:', error);
       return null;
     }
   }
-  
+
   export async function getRatingData(productId:string) {
     try {
-      const response = await axios.get(`http://localhost:8000/ratings/product/${productId}`);
+      const response = await axios.get(`/ratings/product/${productId}`);
       return response.data;
     } catch (error) {
       console.error('Error retrieving rating data:', error);

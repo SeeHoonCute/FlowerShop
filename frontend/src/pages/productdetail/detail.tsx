@@ -19,10 +19,10 @@ const data: Data[] = [
     variantId: "V1",
     productId: "P1",
     imageId: "I1",
-    variantName: "Hoa VS-0088",
-    price: 25.99,
+    variantName: "Bó Hoa BH-001",
+    price: 12500,
     quantity: 10,
-    discount: new Float32Array([0.1, 0.2, 0.3]),
+    discount: new Float32Array([0.28, 0.3, 0.1]),
     ratingValue: new Float32Array([4.5, 4.7, 4.2])
   },
   {
@@ -30,9 +30,9 @@ const data: Data[] = [
     productId: "P2",
     imageId: "I2",
     variantName: "Hoa cẩm tú cầu",
-    price: 18.99,
+    price: 125000,
     quantity: 15,
-    discount: new Float32Array([0.2, 0.3, 0.1]),
+    discount: new Float32Array([0.28, 0.3, 0.1]),
     ratingValue: new Float32Array([4.8, 4.9, 4.6])
   },
 
@@ -48,11 +48,11 @@ function ProductDetail() {
         <Grid>
           <Grid.Col span={6}>
             <Stack>
-              <Title order={2} style={{ fontFamily: 'Jost', fontSize: '40px', color: 'red', fontStyle: 'italic' }}>
+              <Title style={{ fontFamily: 'Jost', fontSize: '40px', color: 'red', fontStyle: 'italic' }}>
                 {selectedData.variantName}
               </Title>
               <Rating defaultValue={4} />
-              <Title order={1}>
+              <Title >
                 <Grid>
                   <Grid.Col span={2}>
                   <Text size="lg">Giá:</Text>

@@ -34,6 +34,7 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    // height: 200,
     // borderBottom: `${rem(1)} solid ${
     //   theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
     // }`,
@@ -68,13 +69,13 @@ const useStyles = createStyles((theme) => ({
 const vnd = new Intl.NumberFormat('vi');
 const FeaturesCard = (props: ProductProps) => {
   const {classes, cx, theme} = useStyles();
-  const linkProps = {href: 'products/' + props.link, target: '_blank', rel: 'noopener noreferrer'};
+  const linkProps = {href: 'products/' + props.link, rel: 'noopener noreferrer'};
 
   return (
     <Card withBorder radius="md" className={Styles.card}>
       <Card.Section className={classes.imageSection}>
         <a {...linkProps}>
-        <Image src={props.image}/>
+        <Image className={Styles.image} src={props.image}/>
         </a>
       </Card.Section>
       <Group position="apart" mt="md" className={Styles.fontSize}>
@@ -84,8 +85,8 @@ const FeaturesCard = (props: ProductProps) => {
 
       </Group>
       <Card.Section className={classes.section}>
-        <Group spacing={30}>
-          <div>
+        {/* <Group className={Styles.edition}> */}
+          <div className={Styles.edition}>
           <Text fz="xl" fw={700} sx={{ lineHeight: 1 }} className={Styles.description}>
               {vnd.format(props.price.present)}đ
             </Text>
@@ -95,7 +96,7 @@ const FeaturesCard = (props: ProductProps) => {
             </Text>
             <Badge variant="outline" className={Styles.ColorFont} {...linkProps}>-{props.discount}%</Badge>
           </Group>
-            <Text fz="sm" lineClamp={4}>
+            {/* <Text fz="sm" lineClamp={4}> */}
               <Group position="apart" mt="md" className={Styles.fontSize}>
                 <div>
                 <Rating value={props.rating.rate} fractions={2} readOnly size="xs"/>
@@ -103,9 +104,9 @@ const FeaturesCard = (props: ProductProps) => {
                 <Text mr="xs" color="dimmed"> ({props.rating.rateCount}) </Text>
               </Group>
 
-            </Text>
+            {/* </Text> */}
           </div>
-        </Group>
+        {/* </Group> */}
       </Card.Section>
     </Card>
 

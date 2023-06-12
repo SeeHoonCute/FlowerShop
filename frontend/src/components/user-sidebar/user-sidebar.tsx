@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import { createStyles, Box, Text, Group, rem } from '@mantine/core';
+import {useState} from 'react';
+import {createStyles, Box, Text, Group, rem} from '@mantine/core';
+import {AuthFirebase} from "../../api/firebase/firebase";
+import {useNavigate} from "react-router-dom";
 
 const LINK_HEIGHT = 38;
 const INDICATOR_SIZE = 10;
@@ -54,22 +56,25 @@ interface TableOfContentsFloatingProps {
   setActive: (index: number) => void;
 }
 
-export function UserSideBar({ links, active, setActive }: TableOfContentsFloatingProps) {
-  const { classes, cx } = useStyles();
+export function UserSideBar({links, active, setActive}: TableOfContentsFloatingProps) {
+  const {classes, cx} = useStyles();
+  const authFirebase = new AuthFirebase();
+  const navigate = useNavigate();
 
   const items = links.map((item, index) => (
     <Box<'a'>
       component="a"
-      href={item.link}
       onClick={(event) => {
         event.preventDefault();
         setActive(index);
       }}
       key={item.label}
-      className={cx(classes.link, { [classes.linkActive]: active === index })}
-      sx={(theme) => ({ paddingLeft: `calc(${item.order} * ${theme.spacing.lg})` })}
+      className={cx(classes.link, {[classes.linkActive]: active === index})}
+      sx={(theme) => ({paddingLeft: `calc(${item.order} * ${theme.spacing.lg})`})}
     >
-      {item.label}
+      <Text>
+        {item.label}
+      </Text>
     </Box>
   ));
 
@@ -81,9 +86,26 @@ export function UserSideBar({ links, active, setActive }: TableOfContentsFloatin
       <div className={classes.links}>
         <div
           className={classes.indicator}
-          style={{ transform: `translateY(${rem(active * LINK_HEIGHT + INDICATOR_OFFSET)})` }}
+          style={{transform: `translateY(${rem(active * LINK_HEIGHT + INDICATOR_OFFSET)})`}}
         />
         {items}
+        <Box<'a'>
+          component="a"
+          onClick={(event) => {
+            authFirebase.signOut()
+              .then(() => {
+                navigate('/')
+              });
+          }}
+          className={classes.link}
+          c={'red'}
+          fw={700}
+          sx={(theme) => ({paddingLeft: `calc(1 * ${theme.spacing.lg})`})}
+        >
+          <Text>
+            Đăng xuất
+          </Text>
+        </Box>
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 import {Container, Grid, Paper} from "@mantine/core";
 import {UserSideBar} from "../../components/user-sidebar/user-sidebar";
 import React from "react";
-import UserDetail from "../user-detail/user-detail";
-import UserLocation from "../user-location/user-location";
+import UserDetail from "../../components/user-detail/user-detail";
+import UserLocation from "../../components/user-location/user-location";
 
 const links = [
   {
@@ -20,11 +20,6 @@ const links = [
     "link": "",
     "order": 1
   },
-  {
-    "label": "Đăng xuất",
-    "link": "",
-    "order": 1
-  },
 ]
 
 const UserSummary = () => {
@@ -33,10 +28,10 @@ const UserSummary = () => {
     <Container>
       <Paper p="md" radius="md">
         <Grid>
-          <Grid.Col span={4}>
+          <Grid.Col span={3}>
             <UserSideBar links={links} active={active} setActive={setActive}/>
           </Grid.Col>
-          <Grid.Col span={8}>
+          <Grid.Col span={9}>
             {(active===0)&&<UserDetail/>}
             {(active===1)&&<UserLocation/>}
           </Grid.Col>

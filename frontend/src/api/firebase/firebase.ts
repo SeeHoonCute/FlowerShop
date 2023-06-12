@@ -41,28 +41,29 @@ export class AuthFirebase {
   }
 
   verify = async (user: User): Promise<User> => {
-    try {
-      const isUsed = await axios.get(`/users/check-user/${user.uid}`);
-      if (isUsed.data) {
-        localStorage.setItem("uid", isUsed.data)
-        return user;
-      } else {
-        axios.post("/users", {
-          userGoogleId: user.uid,
-          email: user.email,
-          userName: user.displayName,
-          userImageUrl: user.photoURL ?? "",
-          gender: "UNKNOWN",
-        }).then((response) => {
-          localStorage.setItem("uid", response.data)
-          console.info("UserDetail created")
-          return user;
-        })
-        return user;
-      }
-    } catch (error) {
-      throw new Error("verify user fail");
-    }
+    // try {
+    //   const isUsed = await axios.get(`/users/check-user/${user.uid}`);
+    //   if (isUsed.data) {
+    //     localStorage.setItem("uid", isUsed.data)
+    //     return user;
+    //   } else {
+    //     axios.post("/users", {
+    //       userGoogleId: user.uid,
+    //       email: user.email,
+    //       userName: user.displayName,
+    //       userImageUrl: user.photoURL ?? "",
+    //       gender: "UNKNOWN",
+    //     }).then((response) => {
+    //       localStorage.setItem("uid", response.data)
+    //       console.info("UserDetail created")
+    //       return user;
+    //     })
+    //     return user;
+    //   }
+    // } catch (error) {
+    //   throw new Error("verify user fail");
+    // }
+    return user;
   }
 
   async signInWithGoogle(): Promise<void> {

@@ -42,10 +42,8 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDTO getOrderByID(Long id) {
         Optional<OrderEntity> order = orderRepository.findById(id);
-        System.out.println(order.get().getOrderID());
         if (order.isPresent()){
             OrderDTO orderDTO = modelMapper.map(order.get(), OrderDTO.class);
-            System.out.println(orderDTO);
             return orderDTO;
         }
         return null;

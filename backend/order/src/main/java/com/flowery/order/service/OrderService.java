@@ -13,6 +13,9 @@ public interface OrderService {
 
     public OrderDTO getOrderByID(Long id);
 
+    public List<OrderDTO> getOrderByUserID(Long userId);
+    public List<OrderDTO> getOrderByShopID(Long shopId);
+
     public OrderDTO updateOrder(OrderDTO orderDTO, Long id);
 
     public void deleteOrder(Long id);

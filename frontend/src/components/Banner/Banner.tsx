@@ -44,6 +44,7 @@ const useStyles = createStyles((theme) => ({
 const images = [
   banner1,
   BannerImg,
+
   banner2,
   banner3,
   ];

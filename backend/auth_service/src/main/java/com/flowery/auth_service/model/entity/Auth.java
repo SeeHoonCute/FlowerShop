@@ -20,7 +20,8 @@ import java.time.LocalDateTime;
                 @Index(name = "IDX_AUTH_ROLE", columnList = "role"),
                 @Index(name = "IDX_AUTH_STATUS", columnList = "status")
         })
-public class Auth {
+public class
+Auth {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "authId")

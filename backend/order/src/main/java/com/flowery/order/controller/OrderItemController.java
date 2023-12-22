@@ -25,7 +25,7 @@ public class OrderItemController {
     public List<OrderItemDTO> getOrderItemById(@PathVariable("id") Long id) {
         return orderItemService.getAllOrderItemByOrderID(id);
     }
-    @PostMapping("/{id}/")
+    @PostMapping("/{id}")
     public ResponseEntity<OrderItemDTO> createOrderItem(@RequestBody OrderItemDTO orderItemDTO, @PathVariable("id") Long id) {
         OrderItemDTO orderItem1 = orderItemService.createOrderItem(orderItemDTO,id);
         if(orderItem1 !=null){

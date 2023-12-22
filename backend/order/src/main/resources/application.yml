@@ -1,0 +1,21 @@
+spring:
+  #DB
+  datasource:
+    url: jdbc:mysql://sql.freedb.tech:3306/freedb_OrderEntity?useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: freedb_seehooncute
+    password: w6X?5!K9EbJYNbU
+
+  #JPA
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+#SERVER
+server:
+  port: 8083
+
+springdoc:
+  api-docs:
+    path: orders/v3/api-docs

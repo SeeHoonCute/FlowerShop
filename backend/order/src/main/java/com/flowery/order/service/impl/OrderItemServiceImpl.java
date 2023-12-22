@@ -38,12 +38,6 @@ public class OrderItemServiceImpl implements OrderItemService {
         return orderItemDTO1;
     }
 
-//    @Override
-//    public OrderItemDTO getOrderItemByID(Long id) {
-//        OrderItemDTO orderItemDTO = modelMapper.map(orderItemRepository.findById(id), OrderItemDTO.class);
-//        return orderItemDTO;
-//    }
-
     @Override
     public OrderItemDTO updateOrderItem(OrderItemDTO orderItemDTO, Long id, Long idItem) {
         OrderItemEntity existingOrderItem = orderItemRepository.findByOrderIDAndOrderItemID(id, idItem);

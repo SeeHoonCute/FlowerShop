@@ -26,6 +26,9 @@ public class OrderEntity {
     @Column(name = "customerID")
     private Long customerID;
 
+    @Column(name = "shopID")
+    private Long shopID;
+
     @Column(name = "orderDate")
     @CreationTimestamp
     private Timestamp orderDate;
@@ -45,4 +48,5 @@ public class OrderEntity {
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "orderEntity")
     private List<OrderItemEntity> orderItemEntityList;
+
 }
